@@ -1,5 +1,12 @@
 import '../styles/globals.css'
 
+import { Raleway } from "@next/font/google"
+
+const raleway = Raleway({
+  subsets: ['latin'],
+  variable: '--font-raleway',
+})
+
 export default function RootLayout({
   children,
 }: {
@@ -9,7 +16,7 @@ export default function RootLayout({
     <html>
       <head />
       <body>
-        <main>
+        <main className={`${raleway.variable} font-sans`}>
           {children}
         </main>
       </body>
