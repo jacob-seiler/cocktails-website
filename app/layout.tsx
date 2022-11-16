@@ -13,10 +13,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html>
+    <html className={`${raleway.variable} font-sans`}>
       <head />
       <body>
-        <main className={`${raleway.variable} font-sans`}>
+        <main>
           {children}
         </main>
       </body>

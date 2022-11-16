@@ -3,8 +3,13 @@ import Filters from "./Filters";
 import Search from "./Search";
 import { Raleway, Playfair_Display } from "@next/font/google"
 
-const playfairDisplay = Playfair_Display()
-const raleway = Raleway()
+const playfairDisplay = Playfair_Display({
+  subsets: ['latin']
+})
+
+const raleway = Raleway({
+  subsets: ['latin']
+})
 
 export default function Home() {
     return (
