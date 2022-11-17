@@ -1,5 +1,5 @@
 import Card from "./Card"
-import mojito from "../public/mojito.webp"
+import mojito from "public/mojito.webp"
 
 export default function Cards() {
     return (

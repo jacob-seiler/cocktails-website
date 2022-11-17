@@ -1,4 +1,4 @@
-import '../styles/globals.css'
+import 'styles/globals.css'
 
 import { Raleway, Playfair_Display } from "@next/font/google"
 
