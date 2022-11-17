@@ -17,7 +17,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
     <html className={`${raleway.variable} ${playfairDisplay.variable} font-sans`}>
       <head />
       <body>
-        <main>
+        <main className='m-2'>
           {children}
         </main>
       </body>

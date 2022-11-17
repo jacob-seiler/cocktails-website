@@ -7,9 +7,9 @@ export default function Home() {
         <>
             <h1 className="font-serif">Find your signature drink</h1>
             <Search />
-            <h2>Filters</h2>
+            <h2 className="mt-6">Filters</h2>
             <Filters />
-            <Cards />
+            <Cards className="mt-6" />
         </>
     )
 }
