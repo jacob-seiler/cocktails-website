@@ -11,6 +11,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['var(--font-raleway)', ...fontFamily.sans],
+        serif: ['var(--font-playfairDisplay)', ...fontFamily.serif],
       },
     },
   },
