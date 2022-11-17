@@ -1,3 +1,5 @@
 export default function Search() {
-    return <div>Search</div>
+    return (
+        <input type="text" className="border" placeholder="Search" />
+    )
 }

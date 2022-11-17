@@ -15,7 +15,7 @@ const Card: React.FC<CardProps> = ({ title, thumbnail, favorited }) => {
             {thumbnail && <Image src={thumbnail} alt="Thumbnail" />}
             <div className="flex">
                 <h3 className="font-serif">{title}</h3>
-                <Heart className={`w-4 ${favorited ? `text-red-700` : `text-black`}`} />
+                <Heart className={`w-4 ml-auto ${favorited ? `text-red-700` : `text-black`}`} />
             </div>
             <Tag>Rum</Tag>
             <Tag>Sweet</Tag>
