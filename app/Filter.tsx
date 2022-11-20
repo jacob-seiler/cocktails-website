@@ -7,13 +7,12 @@ interface FilterProps {
 
 const Filter: React.FC<FilterProps> = ({className, label, value, options}) => {
     return (
-        <select className={className}>
+        <select className={className} defaultValue={value}>
             <option value={undefined}>{label}</option>
             {options.map(option => {
                 return (
                     <option
                         key={option.value}
-                        selected={option.value === value}
                         value={option.value}
                     >
                         {option.label}
