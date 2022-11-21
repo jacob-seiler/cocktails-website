@@ -13,15 +13,15 @@ interface CardProps {
 
 export default function Card({ title, thumbnailURL, tags, ingredients, favourited }: CardProps) {
     return (
-        <div className="border border-black rounded-md">
+        <div className="border border-black rounded-md overflow-hidden">
             {thumbnailURL &&
-                <div className="relative h-[140px] overflow-hidden">
+                <div className="relative h-[140px] overflow-hidden border-b border-black">
                     <Image
                         src={thumbnailURL}
                         fill
                         sizes="100%" // TODO
                         alt="Thumbnail"
-                        className="rounded-t-md object-cover object-top"
+                        className="object-cover object-top"
                     />
                 </div>
             }
