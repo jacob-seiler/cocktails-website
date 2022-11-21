@@ -27,8 +27,8 @@ export default function Card({ title, thumbnailURL, tags, ingredients, favourite
             }
             <div className="mx-2">
                 <div className="flex mb-2">
-                    <h3 className="font-serif">{title}</h3>
-                    <Heart className={`w-4 ml-auto ${favourited ? `text-red-700` : `text-black`}`} />
+                    <h3 className="font-serif text-2xl">{title}</h3>
+                    <Heart className={`w-5 ml-auto ${favourited ? `text-red-700` : `text-black`}`} />
                 </div>
                 {ingredients &&
                     <Tag className={`mb-2${tags ? " mr-2" : ""}`}>{ingredients[0]}</Tag>
