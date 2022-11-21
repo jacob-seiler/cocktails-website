@@ -14,7 +14,7 @@ const cocktails = async (_req: NextApiRequest, res: NextApiResponse) => {
 
         return {
             title: record.name,
-            thumbnailURL: record.thumbnail ?  `${pb.baseUrl}/api/files/${record.collectionId}/${record.id}/${record.thumbnail}` : undefined,
+            thumbnailURL: record.thumbnail ? pb.getFileUrl(record, record.thumbnail) : undefined,
             tags,
             ingredients
         }
