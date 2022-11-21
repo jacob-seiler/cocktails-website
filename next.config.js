@@ -9,7 +9,10 @@ const nextConfig = {
       use: '@svgr/webpack'
     })
     return config
-  }
+  },
+  images: {
+    domains: ['127.0.0.1']
+  },
 }
 
 module.exports = nextConfig

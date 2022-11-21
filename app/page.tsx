@@ -9,6 +9,7 @@ export default function Home() {
             <Search />
             <h2 className="mt-6">Filters</h2>
             <Filters />
+            {/* @ts-ignore */}
             <Cards className="mt-6" />
         </>
     )

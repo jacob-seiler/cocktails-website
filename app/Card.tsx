@@ -1,29 +1,43 @@
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import React from "react";
 import Heart from "public/heart.svg";
 import Tag from "./Tag";
 
 interface CardProps {
     title: string;
-    thumbnail?: StaticImageData; // TODO use remote image instead
-    favorited?: boolean;
-    tags?: string[];
+    thumbnailURL: string;
+    tags: string[];
+    ingredients: string[];
+    favourited?: boolean;
 }
 
-const Card: React.FC<CardProps> = ({ title, thumbnail, favorited, tags }) => {
+export default function Card({ title, thumbnailURL, tags, ingredients, favourited }: CardProps) {
     return (
         <div className="border border-black rounded-md">
-            {thumbnail && <Image src={thumbnail} alt="Thumbnail" className="rounded-t-md" />}
+            {thumbnailURL &&
+                <div className="relative h-[140px] overflow-hidden">
+                    <Image
+                        src={thumbnailURL}
+                        fill
+                        sizes="100%" // TODO
+                        alt="Thumbnail"
+                        className="rounded-t-md object-cover object-top"
+                    />
+                </div>
+            }
             <div className="mx-2">
                 <div className="flex mb-2">
                     <h3 className="font-serif">{title}</h3>
-                    <Heart className={`w-4 ml-auto ${favorited ? `text-red-700` : `text-black`}`} />
+                    <Heart className={`w-4 ml-auto ${favourited ? `text-red-700` : `text-black`}`} />
                 </div>
+                {ingredients &&
+                    <Tag className={`mb-2${tags ? " mr-2" : ""}`}>{ingredients[0]}</Tag>
+                }
                 {tags && tags.map((tag, index) => {
                     return (
                         <Tag
                             key={index}
-                            className={`mb-2 ${index === tags.length - 1 ? undefined : "mr-2"}`}
+                            className={`mb-2${index === tags.length - 1 ? "" : " mr-2"}`}
                         >
                             {tag}
                         </Tag>
@@ -33,5 +47,3 @@ const Card: React.FC<CardProps> = ({ title, thumbnail, favorited, tags }) => {
         </div>
     )
 }
-
-export default Card
