@@ -10,7 +10,7 @@ export default async function cocktail(req: NextApiRequest, res: NextApiResponse
     const tags: string[] = record.expand.tags.map((tag: { name: string }) => tag.name)
     const ingredients: string[] = record.expand.ingredients.map(((ingredient: { name: string }) => ingredient.name))
 
-    // TODO return more
+    // TODO return more (description, total favourited, etc)
     const data: Cocktail = {
         id: record.id,
         title: record.name,
