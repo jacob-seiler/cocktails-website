@@ -1,7 +1,8 @@
 import Image from "next/image";
 import React from "react";
-import Heart from "public/heart.svg";
 import Tag from "./Tag";
+import Heart from "./Heart";
+
 import type { Cocktail } from "../types";
 
 export default function Card({ title, thumbnailURL, tags, ingredients, favourited }: Cocktail) {
@@ -21,7 +22,7 @@ export default function Card({ title, thumbnailURL, tags, ingredients, favourite
             <div className="mx-2">
                 <div className="flex mb-2">
                     <h3 className="font-serif text-2xl">{title}</h3>
-                    <Heart className={`w-5 ml-auto ${favourited ? `text-red-700` : `text-black`}`} />
+                    <Heart favourited={favourited} />
                 </div>
                 {ingredients &&
                     <Tag className={`mb-2${tags ? " mr-2" : ""}`}>{ingredients[0]}</Tag>
