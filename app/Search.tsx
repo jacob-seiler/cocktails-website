@@ -8,7 +8,7 @@ export default function Search() {
     return (
         <>
             <input type="text" className="border" placeholder="Search" value={text} onChange={e => setText(e.target.value)} />
-            <p>{text}</p>
+            <p>{text}</p> {/* TODO: API call */}
         </>
     )
 }
