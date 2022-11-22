@@ -2,7 +2,7 @@ import Cards from "./Cards";
 import Filters from "./Filters";
 import Search from "./Search";
 
-export default function Home() {
+export default function Home({ searchParams }: {searchParams: { q: string } }) {
     return (
         <>
             <h1 className="font-serif">Find your signature drink</h1>
@@ -10,7 +10,7 @@ export default function Home() {
             <h2 className="mt-6">Filters</h2>
             <Filters />
             {/* @ts-ignore */}
-            <Cards className="mt-6" />
+            <Cards className="mt-6" search={searchParams.q} />
         </>
     )
 }

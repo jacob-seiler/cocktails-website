@@ -3,10 +3,11 @@ import Card from "./Card"
 
 interface CardsProps {
     className?: string;
+    search?: string;
 }
 
-export default async function Cards({ className }: CardsProps) {
-    const res = await fetch('http://localhost:3000/api/cocktails')
+export default async function Cards({ className, search }: CardsProps) {
+    const res = await fetch(`http://localhost:3000/api/cocktails${search ? `?q=${search}` : ''}`)
     const data: Cocktail[] = await res.json()
 
     return (

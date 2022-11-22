@@ -2,11 +2,25 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import type { Cocktail } from '../../../types';
 import PocketBase from 'pocketbase'
 
-export default async function cocktails(_req: NextApiRequest, res: NextApiResponse) {
+const handleQueryParam = (param: string | string[] | undefined): string | undefined => {
+    let term = param
+
+    if (Array.isArray(term))
+        term = term.length === 0 ? undefined : term[0]
+
+    // TODO sanitize
+    
+    return term
+}
+
+export default async function cocktails(req: NextApiRequest, res: NextApiResponse) {
+    const searchTerm = handleQueryParam(req.query.q);
+
     const pb = new PocketBase('http://127.0.0.1:8090')
     const records = await pb.collection('cocktails').getFullList(200, {
         sort: 'created',
         expand: 'ingredients,tags',
+        filter: searchTerm ? `name~"${searchTerm}%"` : ''
     });
 
     const data: Cocktail[] = records.map(record => {
