@@ -2,16 +2,9 @@ import Image from "next/image";
 import React from "react";
 import Heart from "public/heart.svg";
 import Tag from "./Tag";
+import type { Cocktail } from "../types";
 
-interface CardProps {
-    title: string;
-    thumbnailURL: string;
-    tags: string[];
-    ingredients: string[];
-    favourited?: boolean;
-}
-
-export default function Card({ title, thumbnailURL, tags, ingredients, favourited }: CardProps) {
+export default function Card({ title, thumbnailURL, tags, ingredients, favourited }: Cocktail) {
     return (
         <div className="border border-black rounded-md overflow-hidden">
             {thumbnailURL &&

@@ -5,3 +5,13 @@ declare module 'public/*.svg' {
 
     export default Component
 }
+
+// TODO replace with tRPC
+export interface Cocktail {
+    id: string;
+    title: string;
+    thumbnailURL: string | undefined;
+    tags: string[];
+    ingredients: string[];
+    favourited: boolean;
+}
