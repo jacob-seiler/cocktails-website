@@ -10,7 +10,7 @@ export default function Search() {
 
     // TODO when implemented into Next 13, replace with shallow routing
     useEffect(() => {
-        router.replace(`/?q=${encodeURIComponent(text)}`)
+        router.replace(text ? `/?q=${encodeURIComponent(text)}` : '')
     }, [router, text])
     
     return (
