@@ -1,23 +1,16 @@
-"use client";
-
+import type { Cocktail } from "../../types"
+import Heart from "../Heart"
+import Tag from "../Tag"
 import Image from "next/image";
-import React from "react";
-import Tag from "./Tag";
-import Heart from "./Heart";
-import { useRouter } from "next/navigation";
-import type { Cocktail } from "../types";
 
-export default function Card({ id, title, thumbnailURL, tags, ingredients, favourited }: Cocktail) {
-    const router = useRouter()
-
-    const handleClick = () => {
-        router.push(`/${id}`)
-    }
+export default async function CocktailPage({ params }: { params: { cocktailID: string } }) {
+    const res = await fetch(`http://localhost:3000/api/cocktails/${params.cocktailID}`)
+    const {thumbnailURL, title, favourited, tags, ingredients}: Cocktail = await res.json()
 
     return (
-        <div className="border border-black rounded-md overflow-hidden">
+        <>
             {thumbnailURL &&
-                <div className="relative h-[140px] overflow-hidden border-b border-black cursor-pointer" onClick={handleClick}>
+                <div className="relative h-[300px] overflow-hidden border-b border-black">
                     <Image
                         src={thumbnailURL}
                         fill
@@ -29,8 +22,8 @@ export default function Card({ id, title, thumbnailURL, tags, ingredients, favou
             }
             <div className="mx-2">
                 <div className="flex mb-2">
-                    <h3 className="font-serif text-2xl cursor-pointer" onClick={handleClick}>{title}</h3>
-                    <Heart className="w-5" favourited={favourited} />
+                    <h3 className="font-serif text-4xl">{title}</h3>
+                    <Heart className="w-7" favourited={favourited} />
                 </div>
                 {ingredients &&
                     <Tag className={`mb-2${tags ? " mr-2" : ""}`}>{ingredients[0]}</Tag>
@@ -46,6 +39,6 @@ export default function Card({ id, title, thumbnailURL, tags, ingredients, favou
                     )
                 })}
             </div>
-        </div>
+        </>
     )
 }

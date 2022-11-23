@@ -5,9 +5,10 @@ import { MouseEventHandler, useState } from "react";
 
 interface HeartProps {
     favourited: boolean;
+    className?: string;
 }
 
-export default function Heart({ favourited }: HeartProps) {
+export default function Heart({ favourited, className }: HeartProps) {
     const [filled, setFilled] = useState(favourited)
 
     const handleClick = () => {
@@ -16,5 +17,5 @@ export default function Heart({ favourited }: HeartProps) {
         // TODO api call?
     }
 
-    return <HeartSVG onClick={handleClick} className={`w-5 ml-auto cursor-pointer stroke-2 stroke-black ${filled ? `fill-red-500` : `fill-none`}`} />
+    return <HeartSVG onClick={handleClick} className={`${className ? `${className} ` : ''}ml-auto cursor-pointer stroke-2 stroke-black ${filled ? `fill-red-500` : `fill-none`}`} />
 }
