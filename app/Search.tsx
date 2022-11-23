@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from "react";
 
 export default function Search() {
@@ -8,8 +8,9 @@ export default function Search() {
     const router = useRouter()
     const [text, setText] = useState(searchParams.get("q") ?? "")
 
+    // TODO when implemented into Next 13, replace with shallow routing
     useEffect(() => {
-        router.push(`${text ? `?q=${text}` : ''}`)
+        router.replace(`/?q=${encodeURIComponent(text)}`)
     }, [router, text])
     
     return (
