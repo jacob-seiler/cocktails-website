@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default async function CocktailPage({ params }: { params: { cocktailID: string } }) {
     const res = await fetch(`http://localhost:3000/api/cocktails/${params.cocktailID}`)
-    const {thumbnailURL, title, favourited, tags, ingredients}: Cocktail = await res.json()
+    const {thumbnailURL, title, favourited, tags, ingredients, description}: Cocktail = await res.json()
 
     return (
         <>
@@ -20,8 +20,8 @@ export default async function CocktailPage({ params }: { params: { cocktailID: s
                     />
                 </div>
             }
-            <div className="mx-2">
-                <div className="flex mb-2">
+            <div className="mt-2">
+                <div className="flex mb-4">
                     <h3 className="font-serif text-4xl">{title}</h3>
                     <Heart className="w-7" favourited={favourited} />
                 </div>
@@ -38,6 +38,9 @@ export default async function CocktailPage({ params }: { params: { cocktailID: s
                         </Tag>
                     )
                 })}
+                {description &&
+                    <p className="mt-3">{description}</p>
+                }
             </div>
         </>
     )

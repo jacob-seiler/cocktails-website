@@ -13,5 +13,6 @@ export interface Cocktail {
     thumbnailURL: string | undefined;
     tags: string[];
     ingredients: string[];
+    description: string | undefined;
     favourited: boolean;
 }

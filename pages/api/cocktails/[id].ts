@@ -17,6 +17,7 @@ export default async function cocktail(req: NextApiRequest, res: NextApiResponse
         thumbnailURL: record.thumbnail ? pb.getFileUrl(record, record.thumbnail) : undefined,
         tags,
         ingredients,
+        description: record.description,
         favourited: false,
     }
 
