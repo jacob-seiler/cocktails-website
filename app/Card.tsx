@@ -7,7 +7,7 @@ import Heart from "./Heart";
 import { useRouter } from "next/navigation";
 import type { Cocktail } from "../types";
 
-export default function Card({ id, title, thumbnailURL, tags, ingredients, favourited }: Cocktail) {
+export default function Card({ id, name: title, thumbnailURL, tags, ingredients, favourited }: Cocktail) {
     const router = useRouter()
 
     const handleClick = () => {

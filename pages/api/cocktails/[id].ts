@@ -13,7 +13,7 @@ export default async function cocktail(req: NextApiRequest, res: NextApiResponse
     // TODO return more (description, total favourited, etc)
     const data: Cocktail = {
         id: record.id,
-        title: record.name,
+        name: record.name,
         thumbnailURL: record.thumbnail ? pb.getFileUrl(record, record.thumbnail) : undefined,
         tags,
         ingredients,

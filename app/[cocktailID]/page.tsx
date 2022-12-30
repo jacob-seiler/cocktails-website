@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default async function CocktailPage({ params }: { params: { cocktailID: string } }) {
     const res = await fetch(`http://localhost:3000/api/cocktails/${params.cocktailID}`)
-    const {thumbnailURL, title, favourited, tags, ingredients, description}: Cocktail = await res.json()
+    const {thumbnailURL, name: title, favourited, tags, ingredients, description}: Cocktail = await res.json()
 
     return (
         <>

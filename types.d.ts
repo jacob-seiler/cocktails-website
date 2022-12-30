@@ -9,7 +9,7 @@ declare module 'public/*.svg' {
 // TODO replace with tRPC
 export interface Cocktail {
     id: string;
-    title: string;
+    name: string;
     thumbnailURL: string | undefined;
     tags: string[];
     ingredients: string[];
