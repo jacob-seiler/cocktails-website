@@ -3,23 +3,27 @@ import Heart from "../Heart"
 import Tag from "../Tag"
 import Image from "next/image";
 
-export default async function CocktailPage({ params }: { params: { cocktailID: string } }) {
-    const res = await fetch(`http://localhost:3000/api/cocktails/${params.cocktailID}`, { next: { revalidate: 30 }})
-    const {thumbnailURL, name, favourited, tags, ingredients, description}: Cocktail = await res.json()
+export default async function CocktailPage() {
+    const {thumbnailURL, name, favourited, tags, ingredients, description}: Partial<Cocktail> = {
+        thumbnailURL: "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png",
+        name: "Loading...",
+        favourited: false,
+        tags: ["..."],
+        ingredients: ["..."],
+        description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et laborum ipsa totam commodi est delectus neque voluptatem, illum pariatur, iste rem numquam doloribus incidunt, ea recusandae vero culpa eos. Iste."
+    }
 
     return (
         <>
-            {thumbnailURL &&
-                <div className="relative h-[300px] overflow-hidden border-b border-black">
-                    <Image
-                        src={thumbnailURL}
-                        fill
-                        sizes="100%" // TODO
-                        alt="Thumbnail"
-                        className="object-cover object-top"
-                    />
-                </div>
-            }
+            <div className="relative h-[300px] overflow-hidden border-b border-black">
+                <Image
+                    src={thumbnailURL}
+                    fill
+                    sizes="100%" // TODO
+                    alt="Thumbnail"
+                    className="object-cover object-top"
+                />
+            </div>
             <div className="mt-2">
                 <div className="flex mb-4">
                     <h3 className="font-serif text-4xl">{name}</h3>

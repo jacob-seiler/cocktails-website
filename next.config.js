@@ -11,7 +11,7 @@ const nextConfig = {
     return config
   },
   images: {
-    domains: ['127.0.0.1']
+    domains: ['127.0.0.1', 'developers.elementor.com'] // TODO elementor is temporary. Use local source  for loading placeholder instead.
   },
 }
 

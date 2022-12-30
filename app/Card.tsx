@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
 import Tag from "./Tag";
 import Heart from "./Heart";
 import { useRouter } from "next/navigation";
@@ -11,7 +10,7 @@ export default function Card({ id, name: title, thumbnailURL, tags, ingredients,
     const router = useRouter()
 
     const handleClick = () => {
-        router.push(`/${id}`)
+        router.push(`/${id}`);
     }
 
     return (
