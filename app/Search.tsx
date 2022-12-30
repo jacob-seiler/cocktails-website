@@ -1,11 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Search() {
     const [text, setText] = useState("");
     const [isFetching, setIsFetching] = useState(false);
-    const [results, setResults] = useState<string[]>([]);
+    const [results, setResults] = useState<{id: string, name: string}[]>([]);
 
     useEffect(() => {
         const updateResults = async () => {
@@ -17,7 +18,7 @@ export default function Search() {
             setIsFetching(true);
             
             const res = await fetch(`http://localhost:3000/api/search?q=${text}`);
-            const data: string[] = await res.json();
+            const data: {id: string, name: string}[] = await res.json();
             
             setResults(data)
             setIsFetching(false);
@@ -36,7 +37,7 @@ export default function Search() {
 
         return (
             <ul>
-                {results.map((result, i) => <li key={i}>{result}</li>)}
+                {results.map(({id, name}) => <li key={id}><Link href={`/${id}`}>{name}</Link></li>)}
             </ul>
         )
     }

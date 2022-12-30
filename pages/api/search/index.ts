@@ -20,9 +20,7 @@ export default async function search(req: NextApiRequest, res: NextApiResponse) 
         filter: searchTerm ? `name~"${searchTerm}%"` : ''
     });
 
-    const data: Cocktail[] = records.map(record => {
-        return record.name
-    })
+    const data: Partial<Cocktail>[] = records.map(({ id, name }) => {return {id, name}})
 
     res.status(200).json(data)
 }
